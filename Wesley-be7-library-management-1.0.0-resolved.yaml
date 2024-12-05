@@ -12,6 +12,8 @@ paths:
   /books:
     get:
       summary: Get all books
+      tags:
+        - Books
       parameters:
       - name: bookName
         in: query
@@ -41,6 +43,8 @@ paths:
                   $ref: '#/components/schemas/Book'
     put:
       summary: Update a book
+      tags:
+        - Books
       requestBody:
         content:
           application/json:
@@ -52,6 +56,8 @@ paths:
           description: Book updated
     post:
       summary: Add a new book
+      tags:
+        - Books
       requestBody:
         content:
           application/json:
@@ -63,6 +69,8 @@ paths:
           description: Book created
     delete:
       summary: Delete a book
+      tags:
+        - Books
       parameters:
       - name: id
         in: query
@@ -77,6 +85,8 @@ paths:
   /authors:
     get:
       summary: Get all authors
+      tags:
+        - Authors
       parameters:
       - name: authorName
         in: query
@@ -97,6 +107,8 @@ paths:
                   $ref: '#/components/schemas/Author'
     put:
       summary: Update an author
+      tags:
+        - Authors
       requestBody:
         content:
           application/json:
@@ -108,6 +120,8 @@ paths:
           description: Author updated
     post:
       summary: Add a new author
+      tags:
+        - Authors
       requestBody:
         content:
           application/json:
@@ -119,6 +133,8 @@ paths:
           description: Author created
     delete:
       summary: Delete an author
+      tags:
+        - Authors
       parameters:
       - name: id
         in: query
