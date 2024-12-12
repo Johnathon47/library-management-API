@@ -1,0 +1,100 @@
+openapi: 3.0.0
+info:
+  title: School Management
+  description: API for managing students and Group
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/Wesley-be7/school-management/1.0.0
+  description: SwaggerHub API Auto Mocking
+paths:
+  /group:
+    get:
+      tags:
+      - Group
+      summary: Get all group
+      parameters:
+      - name: groupName
+        in: query
+        description: Filter by group name
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: year
+        in: query
+        description: Filter by year
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/groupName'
+  /students:
+    get:
+      tags:
+      - Students
+      summary: Get all students
+      parameters:
+      - name: studentName
+        in: query
+        description: Filter by student name
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/student'
+components:
+  schemas:
+    groupName:
+      type: object
+      properties:
+        name:
+          type: string
+        year:
+          type: integer
+        promotion:
+          type: string
+          enum:
+          - G
+          - H
+          - J
+          - K
+        students:
+          type: array
+          items:
+            $ref: '#/components/schemas/student'
+    student:
+      type: object
+      properties:
+        studentName:
+          type: string
+        sex:
+          type: string
+          enum:
+          - M
+          - F
+        birthdate:
+          type: string
+          format: date
+        reference:
+          type: string
+        group:
+          $ref: '#/components/schemas/groupName'
